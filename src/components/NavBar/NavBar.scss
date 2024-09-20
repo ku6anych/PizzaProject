@@ -3,6 +3,10 @@
     border-radius: 30px;
     background: #f9f9f9;
   }
+  .selected {
+    background: black;
+    color: white;
+  }
   .sortBy {
     .selectSortBy {
       font-weight: 400;

@@ -9,6 +9,10 @@ const App = () => {
       <Container maxWidth="xl">
         <Header />
         <NavBar />
+        <img
+          src="https://png.pngtree.com/png-clipart/20231019/original/pngtree-pizza-png-with-ai-generated-png-image_13357740.png"
+          alt="s"
+        />
       </Container>
     </>
   );
