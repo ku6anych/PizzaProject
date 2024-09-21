@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { pizzaReducer } from '../components/AllPizza/pizzaSlice.ts';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    pizza: pizzaReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.dispatch>;

@@ -19,4 +19,4 @@ export const PizzaSort = [
   },
 ];
 
-export const TypesNames = ['flat', 'traditional'];
+export const TypesNames = ['FLAT', 'SIMPLE'];
