@@ -1,0 +1,25 @@
+.PizzaItem {
+  width: 280px;
+  padding: 0;
+  .PizzaCard {
+    border: none;
+    box-shadow: none;
+    .pizzaOptions {
+      background: #f3f3f3;
+      border-radius: 10px;
+      padding: 7px 5px;
+      .pizzaForm {
+        background: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+        border-radius: 5px;
+      }
+    }
+  }
+  .PizzaCardBottom {
+    button {
+      color: #fe5f1e;
+      border: 1px solid #eb5a1e;
+      border-radius: 30px;
+    }
+  }
+}
