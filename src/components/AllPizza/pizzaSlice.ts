@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { pizzaItem } from '../../types.ts';
-import { getAllPizzaThunk } from './pizzaThunks.ts';
+import { pizzaItem } from '../../types';
+import { getAllPizzaThunk } from './pizzaThunks';
 
 export interface allPizzaState {
   pizzas: pizzaItem[];

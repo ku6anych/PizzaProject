@@ -1,8 +1,8 @@
 import { Box, Button, Card, CardContent, CardMedia, Grid2, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import './Pizza.scss';
-import { pizzaItem } from '../../types.ts';
-import { TypesNames } from '../../Constants.ts';
+import { pizzaItem } from '../../types';
+import { TypesNames } from '../../Constants';
 import { useState } from 'react';
 
 const OnePizza = ({ imageUrl, price, sizes, title, types }: pizzaItem) => {

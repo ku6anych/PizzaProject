@@ -9,13 +9,15 @@
     color: white;
   }
   .sortBy {
+    img {
+      width: 24px;
+    }
     .selectSortBy {
       font-weight: 400;
       font-size: 14px;
       letter-spacing: 0.01em;
       color: #fe5f1e;
-      text-decoration: underline;
-      padding-left: 10px;
+      border-bottom: 1px dashed #eb5a1e;
     }
   }
 }

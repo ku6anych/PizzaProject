@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axiosApi from '../../axiosApi.ts';
-import { pizzaItem } from '../../types.ts';
+import axiosApi from '../../axiosApi';
+import { pizzaItem } from '../../types';
 
 export const getAllPizzaThunk = createAsyncThunk<pizzaItem[], void>('getAllPizzaThunk', async () => {
   const pizzasResponse = await axiosApi.get('/allPizzas.json');
