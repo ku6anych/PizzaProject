@@ -22,7 +22,6 @@ export const pizzaSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAllPizzaThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.loading = false;
         state.pizzas = payload;
       })

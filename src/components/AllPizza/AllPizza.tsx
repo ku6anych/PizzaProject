@@ -14,6 +14,7 @@ const AllPizza = () => {
 
   useEffect(() => {
     dispatch(getAllPizzaThunk());
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   return (
