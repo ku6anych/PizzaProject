@@ -3,7 +3,7 @@ import OnePizza from './OnePizza';
 import { useAppDispatch } from '../../app/hooks';
 import { useEffect } from 'react';
 import { getAllPizzaThunk } from './pizzaThunks';
-import { selectAllPizzaLoading, selectAllPizzas } from './pizzaSlice';
+import { selectAllPizzaLoading, selectAllPizzas, selectCategoriesId } from './pizzaSlice';
 import { useSelector } from 'react-redux';
 import OnePizzaSkeleton from './OnePizzaSkeleton';
 
@@ -11,11 +11,12 @@ const AllPizza = () => {
   const dispatch = useAppDispatch();
   const allPizzas = useSelector(selectAllPizzas);
   const allPizzasLoading = useSelector(selectAllPizzaLoading);
+  const categoriesId = useSelector(selectCategoriesId);
 
   useEffect(() => {
     dispatch(getAllPizzaThunk());
     window.scrollTo(0, 0);
-  }, [dispatch]);
+  }, [dispatch, categoriesId]);
 
   return (
     <Box component="div">

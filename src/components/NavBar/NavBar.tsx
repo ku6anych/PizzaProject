@@ -2,20 +2,24 @@ import { PizzaCategories } from '../../Constants';
 import { PizzaSort } from '../../Constants';
 import './NavBar.scss';
 import { Box, Collapse, Grid2, List, ListItemButton, ListItemText, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { useAppDispatch } from '../../app/hooks';
+import { selectCategoriesId, selectSortId, setCategoriesId, setSortId } from '../AllPizza/pizzaSlice';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
   const [open, setOpen] = React.useState(false);
-  const [selectedCategories, setSelectedCategories] = useState(0);
-  const [selectSort, setSelectSort] = useState(0);
+  const selectedCategories = useSelector(selectCategoriesId);
+  const selectSort = useSelector(selectSortId);
+  const dispatch = useAppDispatch();
 
   const onClickChangeCategories = (index: number) => {
-    setSelectedCategories(index);
+    dispatch(setCategoriesId(index));
   };
 
   const onClickChangeSort = (index: number) => {
-    setSelectSort(index);
+    dispatch(setSortId(index));
     handleClick();
   };
   const handleClick = () => {
