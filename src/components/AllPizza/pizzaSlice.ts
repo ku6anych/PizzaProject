@@ -5,6 +5,7 @@ import { getAllPizzaThunk } from './pizzaThunks';
 export interface allPizzaState {
   pizzas: pizzaItem[];
   loading: boolean;
+  searchPizza: string;
   categoriesId: number;
   sortId: number;
 }
@@ -12,6 +13,7 @@ export interface allPizzaState {
 const initialState: allPizzaState = {
   pizzas: [],
   loading: false,
+  searchPizza: '',
   categoriesId: 0,
   sortId: 0,
 };
@@ -20,6 +22,9 @@ export const pizzaSlice = createSlice({
   name: 'pizza',
   initialState,
   reducers: {
+    setSearchPizza: (state, { payload }) => {
+      state.searchPizza = payload;
+    },
     setCategoriesId: (state, { payload }) => {
       state.categoriesId = payload;
     },
@@ -43,11 +48,13 @@ export const pizzaSlice = createSlice({
   selectors: {
     selectAllPizzas: (state) => state.pizzas,
     selectAllPizzaLoading: (state) => state.loading,
+    selectSearchPizza: (state) => state.searchPizza,
     selectCategoriesId: (state) => state.categoriesId,
     selectSortId: (state) => state.sortId,
   },
 });
 
 export const pizzaReducer = pizzaSlice.reducer;
-export const { setCategoriesId, setSortId } = pizzaSlice.actions;
-export const { selectAllPizzas, selectAllPizzaLoading, selectCategoriesId, selectSortId } = pizzaSlice.selectors;
+export const { setCategoriesId, setSortId, setSearchPizza } = pizzaSlice.actions;
+export const { selectAllPizzas, selectAllPizzaLoading, selectSearchPizza, selectCategoriesId, selectSortId } =
+  pizzaSlice.selectors;

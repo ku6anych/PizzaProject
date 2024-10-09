@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { pizzaItem } from '../../types';
 import { firestore } from '../../controller';
-import { collection, getDocs, where, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import { RootState } from '../../app/store';
+import { PizzaSort } from '../../Constants';
 
 export const getAllPizzaThunk = createAsyncThunk('getAllPizzaThunk', async (_, thunkAPI) => {
   const state = thunkAPI.getState() as RootState;
@@ -10,26 +11,16 @@ export const getAllPizzaThunk = createAsyncThunk('getAllPizzaThunk', async (_, t
 
   let q;
   if (state.pizza.categoriesId === 0) {
-    // No need for a placeholder, just order by price directly
-    q = query(collectionRef, orderBy('rating', 'desc'));
+    q = query(collectionRef, orderBy(PizzaSort[state.pizza.sortId].title, 'asc'));
   } else {
     q = query(collectionRef, where('category', '==', state.pizza.categoriesId), orderBy('price', 'asc'));
   }
 
-  //  q = query(collectionRef,
-  //   state.pizza.categoriesId == 0 ?
-  //     where("category", ">", 0):
-  //   where("category", "==", state.pizza.categoriesId),
-  // );
-
   const querySnapshot = await getDocs(q);
-  const data: pizzaItem[] = querySnapshot.docs.map((doc) => ({
+  return querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
-  }));
-
-  console.log(data);
-  return data;
+  })) as pizzaItem[];
 
   // const pizzasResponse = await axiosApi.get('/allPizzas.json');
   // const pizzas = pizzasResponse.data;

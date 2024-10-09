@@ -1,10 +1,17 @@
-import { Box, Divider, Grid2, Typography } from '@mui/material';
+import { Box, Divider, Grid2, TextField, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import logo from '../../assets/headerlogo.svg';
 import './Header.scss';
 import { NavLink } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ContentPasteSearchIcon from '@mui/icons-material/ContentPasteSearch';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectSearchPizza, setSearchPizza } from '../AllPizza/pizzaSlice';
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+  const searchPizza = useAppSelector(selectSearchPizza);
+
   return (
     <Box sx={{ marginBottom: '40px' }}>
       <Grid2 marginY={5} container alignItems="center" justifyContent="center" className={'header'}>
@@ -20,6 +27,24 @@ const Header = () => {
               The most tasty Pizzas here
             </Typography>
           </Box>
+        </Grid2>
+        <Grid2 container alignItems="center" sx={{ marginLeft: 'auto' }}>
+          {!searchPizza && <ContentPasteSearchIcon sx={{ marginTop: 'auto', marginRight: 1 }} />}
+          <Grid2>
+            <TextField
+              onChange={(e) => dispatch(setSearchPizza(e.target.value))}
+              value={searchPizza}
+              id="search"
+              name="search"
+              label="Search"
+              variant="standard"
+            />
+          </Grid2>
+          {searchPizza && (
+            <Grid2 sx={{ marginTop: 'auto' }}>
+              <DeleteIcon onClick={() => dispatch(setSearchPizza(''))} />
+            </Grid2>
+          )}
         </Grid2>
         <Grid2
           container

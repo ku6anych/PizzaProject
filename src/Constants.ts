@@ -6,15 +6,15 @@ export const PizzaCategories = ['All', 'Meat', 'Vegetarian', 'Grill', 'Spicy', '
 
 export const PizzaSort = [
   {
-    title: 'Ratings',
+    title: 'rating',
     icon: rating,
   },
   {
-    title: 'Prices',
+    title: 'price',
     icon: price,
   },
   {
-    title: 'Alphabet',
+    title: 'alphabet',
     icon: alphabet,
   },
 ];
